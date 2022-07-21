@@ -7,8 +7,8 @@ import posts from "./routes/posts";
 const bodyParser = require("body-parser");
 
 const app = express();
-app.set("/", express.static(path.join(__dirname, "public")));
 
+app.use("/public", express.static("public"));
 app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
