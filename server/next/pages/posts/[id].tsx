@@ -15,7 +15,7 @@ interface PostProps {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const result = await axios(
+  const result = await axios.get(
     `${process.env.SERVER_HOST}/posts/getPostData/${params?.id as string}`
   );
   return {

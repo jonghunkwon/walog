@@ -2,7 +2,6 @@ import type { NextPage, GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import axios, { AxiosResponse } from "axios";
 import Template from "../components/base/Template";
-// import { getAllPostsData } from "../lib/posts";
 import LinkButton from "../styles/components/LinkButton";
 
 interface PostProps {
@@ -14,9 +13,14 @@ interface PostProps {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data: allPostsData } = await axios(
+  const { data: allPostsData } = await axios.get(
     `${process.env.SERVER_HOST}/posts/getAllPostData`
   );
+  // const result = await axios.post(
+  //   `${process.env.SERVER_HOST}/posts/updatePostData`,
+  //   { name: "hong" }
+  // );
+  // console.log(result.data);
   return {
     props: {
       allPostsData,

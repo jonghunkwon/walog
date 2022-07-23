@@ -18,7 +18,7 @@ router.get(
 router.post(
   "/updatePostData",
   (req: Request, res: Response, next: NextFunction) => {
-    console.log(req.body);
+    res.send(req.body);
   }
 );
 

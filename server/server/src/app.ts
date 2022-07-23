@@ -11,7 +11,9 @@ const app = express();
 app.use("/public", express.static("public"));
 app.use(cors());
 app.use(morgan("dev"));
-app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.json()); // for parsing application/json
 
 app.use("/posts", posts);
 
