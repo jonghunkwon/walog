@@ -8,7 +8,9 @@ const html = require("remark-html");
 const { readdir } = fs.promises;
 const markdownDirectory = path.join(process.cwd(), "public/markdown");
 
-const getFiles: any = async (directory: string) => {
+type fileObj = (directory: string) => Promise<string[]>;
+
+const getFiles: fileObj = async (directory: string) => {
   const dirents = await readdir(directory, { withFileTypes: true });
   const files = await Promise.all(
     dirents.map((dirent) => {
