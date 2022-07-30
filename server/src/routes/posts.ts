@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import { getPosts, getPost } from "../lib/posts";
+import logger from "../config/logger";
 const router = express.Router();
 
 router.get(
@@ -16,6 +17,7 @@ router.get(
       res.send(await getPost(req.params.id));
     } catch (e) {
       const error = new Error("Unhandled error!");
+      logger.error("GET getPostData Unhandled error!");
       next(error);
     }
   }
@@ -25,7 +27,7 @@ router.put("/savePost", (req: Request, res: Response, next: NextFunction) => {
   res.send(req.body);
 });
 
-router.put(
+router.delete(
   "/deletePost/:id",
   (req: Request, res: Response, next: NextFunction) => {
     res.send(req.body);

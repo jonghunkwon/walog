@@ -21,3 +21,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# log
+/src/logs
