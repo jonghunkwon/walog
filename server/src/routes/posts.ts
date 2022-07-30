@@ -5,18 +5,24 @@ const router = express.Router();
 
 router.get(
   "/getAllPostData",
-  (req: Request, res: Response, next: NextFunction) => {
-    res.send(getPosts());
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      res.send(await getPosts());
+    } catch (e) {
+      const error = new Error("GET getPosts Unhandled error!");
+      logger.error("GET getPosts Unhandled error!");
+      next(error);
+    }
   }
 );
 
 router.get(
-  "/getPostData/:id",
+  "/getPostData/*",
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      res.send(await getPost(req.params.id));
+      res.send(await getPost(Object.values(req.params).join("/")));
     } catch (e) {
-      const error = new Error("Unhandled error!");
+      const error = new Error("GET getPostData Unhandled error!");
       logger.error("GET getPostData Unhandled error!");
       next(error);
     }

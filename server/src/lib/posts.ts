@@ -1,16 +1,31 @@
 import fs from "fs";
-import path from "path";
+import path, { resolve } from "path";
 import matter from "gray-matter";
 import prism from "remark-prism";
 const remark = require("remark");
 const html = require("remark-html");
 
+const { readdir } = fs.promises;
 const markdownDirectory = path.join(process.cwd(), "public/markdown");
 
-export function getPosts() {
+const getFiles: any = async (directory: string) => {
+  const dirents = await readdir(directory, { withFileTypes: true });
+  const files = await Promise.all(
+    dirents.map((dirent) => {
+      const res = resolve(directory, dirent.name);
+      return dirent.isDirectory()
+        ? getFiles(res)
+        : res.replace(markdownDirectory, "");
+    })
+  );
+  return Array.prototype.concat(...files);
+};
+
+export async function getPosts() {
   // Get file names under /posts
-  const fileNames = fs.readdirSync(markdownDirectory);
-  const allPosts = fileNames.map((fileName) => {
+  // const fileNames = fs.readdirSync(markdownDirectory);
+  const fileNames = await getFiles(markdownDirectory);
+  const allPosts = fileNames.map((fileName: string) => {
     // Remove ".md" from file name to get id
     const id = fileName.replace(/\.md$/, "");
 
