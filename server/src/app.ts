@@ -3,7 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import posts from "./routes/posts";
 import logger from "./config/logger";
-
+import "./config/enviroment";
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -28,5 +28,6 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 };
 app.use(errorHandler);
 
-const port = "8000";
-app.listen(port, () => logger.info(`Server Start Listening on port ${port}`));
+app.listen(process.env.SERVER_PORT, () =>
+  logger.info(`Server Start Listening on port ${process.env.SERVER_PORT}`)
+);
