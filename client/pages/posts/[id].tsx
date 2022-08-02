@@ -1,4 +1,5 @@
 import type { NextPage, GetServerSideProps } from "next";
+import Head from 'next/head';
 import { fetchPost } from '../api/posts/post';
 
 interface PostProps {
@@ -22,13 +23,18 @@ const Posts: NextPage<PostProps> = ({
   title,
   date,
 }) => {
-  console.log(title);
   return (
-    <div>
-      <h2>{ title }</h2>
-      <p> { date }</p>
-      <span dangerouslySetInnerHTML={{ __html: contentHtml }}></span>
-    </div>
+    <>
+      <Head>
+        <title>{ title }</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div>
+        <h2>{ title }</h2>
+        <p> { date }</p>
+        <span dangerouslySetInnerHTML={{ __html: contentHtml }}></span>
+      </div>
+    </>
   );
 };
 
