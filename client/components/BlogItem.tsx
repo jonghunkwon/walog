@@ -11,7 +11,7 @@ interface BlogItemProps {
 
 const Container = styled.div`
   padding: 20px 0;
-  
+
   & > a {
     display: block;
   }

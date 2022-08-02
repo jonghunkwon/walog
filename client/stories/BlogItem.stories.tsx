@@ -7,9 +7,6 @@ import BlogItem from '../components/BlogItem';
 export default {
   title: 'Example/BlogItem',
   component: BlogItem,
-  parameters: {
-    layout: 'fullscreen',
-  },
 } as ComponentMeta<typeof BlogItem>;
 
 const Li = styled.li`
