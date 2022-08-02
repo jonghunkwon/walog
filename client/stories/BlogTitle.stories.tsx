@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { BlogTitle } from './BlogTitle';
+import BlogTitle from '../components/BlogTitle';
 
 export default {
   title: 'Example/BlogTitle',

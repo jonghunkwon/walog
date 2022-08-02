@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "@emotion/styled";
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { BlogItem } from './BlogItem';
+import BlogItem from '../components/BlogItem';
 
 export default {
   title: 'Example/BlogItem',
@@ -13,7 +13,7 @@ export default {
 } as ComponentMeta<typeof BlogItem>;
 
 const Li = styled.li`
-  & ~ li {
+  & ~ li { 
     border-top: 1px solid #dde2e6;
   }
 `;
