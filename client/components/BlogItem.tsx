@@ -4,9 +4,9 @@ import Link from "next/link";
 
 interface BlogItemProps {
   href: string;
-  dateTime: string;
   title: string;
   description?: string; //필수?
+  dateTime: string;
 }
 
 const Container = styled.div`
