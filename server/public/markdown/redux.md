@@ -1,6 +1,10 @@
 ---
 title: "redux"
+description: "redux 상태관리를 소개합니다."
 date: "2021-12-30"
+author: "kildong.hong"
+category: "상태관리"
+tags: ["redux"]
 ---
 
 ## redux 개념
