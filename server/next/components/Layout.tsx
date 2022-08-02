@@ -1,32 +1,28 @@
 import React, { FunctionComponent, ReactNode } from "react";
 import styled from "@emotion/styled";
-import Navbar from "./NavBar";
-import Footer from "./Footer";
+import Header from "./Header";
 
 interface LayoutProps {
   children: ReactNode;
 }
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  max-width: 1024px;
+const Inner = styled.div`
+  max-width: 1400px;
   margin: 0 auto;
-`;
-
-const Content = styled.main`
-  flex: 1;
-  margin-top: 64px;
+  padding: 0 16px;
+  box-sizing: content-box;
 `;
 
 const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
   return (
-    <Container>
-      <Navbar />
-      <Content>{children}</Content>
-      <Footer />
-    </Container>
+    <div>
+      <Header />
+      <main>
+        <Inner>
+          {children}
+        </Inner>
+      </main>
+    </div>
   );
 };
 
