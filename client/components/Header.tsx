@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import theme from '../../server/next/styles/theme';
 
 const Container = styled.header`
   position: sticky;
@@ -20,11 +19,11 @@ const Inner = styled.div`
 const Logo = styled.h1`
   & > a {
     display: block;
-    ${theme.fonts.title3}
+    ${props => props.theme.fonts.title3}
   }
 `;
 
-export const Header = () => (
+const Header = () => (
   <Container>
     <Inner>
       <Logo>
@@ -37,3 +36,5 @@ export const Header = () => (
     </Inner>
   </Container>
 );
+
+export default Header;
