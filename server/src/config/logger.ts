@@ -1,10 +1,10 @@
-const winston = require("winston");
-const path = require("path");
-const winstonDaily = require("winston-daily-rotate-file");
+const winston = require('winston');
+const path = require('path');
+const winstonDaily = require('winston-daily-rotate-file');
 
 const { combine, timestamp, printf, colorize } = winston.format;
 
-const logDir = path.join(__dirname, "..", "logs"); // logs 디렉토리 하위에 로그 파일 저장
+const logDir = path.join(__dirname, '..', 'logs'); // logs 디렉토리 하위에 로그 파일 저장
 
 type InfoObj = {
   timestamp: Date;
@@ -22,15 +22,15 @@ const logFormat = printf((info: InfoObj) => {
 const logger = winston.createLogger({
   format: combine(
     timestamp({
-      format: "YYYY-MM-DD HH:mm:ss",
+      format: 'YYYY-MM-DD HH:mm:ss',
     }),
     logFormat
   ),
   transports: [
     // info 레벨 로그를 저장할 파일 설정
     new winstonDaily({
-      level: "info",
-      datePattern: "YYYY-MM-DD",
+      level: 'info',
+      datePattern: 'YYYY-MM-DD',
       dirname: logDir,
       filename: `%DATE%.log`, // file 이름 날짜로 저장
       maxFiles: 30, // 30일치 로그 파일 저장
@@ -38,18 +38,18 @@ const logger = winston.createLogger({
     }),
     // warn 레벨 로그를 저장할 파일 설정
     new winstonDaily({
-      level: "warn",
-      datePattern: "YYYY-MM-DD",
-      dirname: logDir + "/warn",
+      level: 'warn',
+      datePattern: 'YYYY-MM-DD',
+      dirname: logDir + '/warn',
       filename: `%DATE%.warn.log`, // file 이름 날짜로 저장
       maxFiles: 30, // 30일치 로그 파일 저장
       zippedArchive: true,
     }),
     // error 레벨 로그를 저장할 파일 설정
     new winstonDaily({
-      level: "error",
-      datePattern: "YYYY-MM-DD",
-      dirname: logDir + "/error", // error.log 파일은 /logs/error 하위에 저장
+      level: 'error',
+      datePattern: 'YYYY-MM-DD',
+      dirname: logDir + '/error', // error.log 파일은 /logs/error 하위에 저장
       filename: `%DATE%.error.log`,
       maxFiles: 30,
       zippedArchive: true,
@@ -65,7 +65,7 @@ logger.stream = {
 };
 
 // Production 환경이 아닌 경우(dev 등) 배포 환경에서는 최대한 자원을 안잡아 먹는 로그를 출력해야함
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
   logger.add(
     new winston.transports.Console({
       format: combine(

@@ -1,12 +1,12 @@
-import fs from "fs";
-import path, { resolve } from "path";
-import matter from "gray-matter";
-import prism from "remark-prism";
-const remark = require("remark");
-const html = require("remark-html");
+import fs from 'fs';
+import path, { resolve } from 'path';
+import matter from 'gray-matter';
+import prism from 'remark-prism';
+const remark = require('remark');
+const html = require('remark-html');
 
 const { readdir } = fs.promises;
-const markdownDirectory = path.join(process.cwd(), "public/markdown");
+const markdownDirectory = path.join(process.cwd(), 'public/markdown');
 
 type fileObj = (directory: string) => Promise<string[]>;
 
@@ -17,7 +17,7 @@ const getFiles: fileObj = async (directory: string) => {
       const res = resolve(directory, dirent.name);
       return dirent.isDirectory()
         ? getFiles(res)
-        : res.replace(markdownDirectory, "");
+        : res.replace(markdownDirectory, '');
     })
   );
   return Array.prototype.concat(...files);
@@ -29,11 +29,11 @@ export async function getPosts() {
   const fileNames = await getFiles(markdownDirectory);
   const allPosts = fileNames.map((fileName: string) => {
     // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, "");
+    const id = fileName.replace(/\.md$/, '');
 
     // Read markdown file as string
     const fullPath = path.join(markdownDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
@@ -49,7 +49,7 @@ export async function getPosts() {
 
 export async function getPost(id: string) {
   const fullPath = path.join(markdownDirectory, `${id}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
 
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
