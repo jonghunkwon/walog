@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 import posts from './routes/posts';
 import logger from './config/logger';
 import './config/enviroment';
-import { getDBPosts } from './models';
 
 const app = express();
 app.use('/public', express.static('public'));

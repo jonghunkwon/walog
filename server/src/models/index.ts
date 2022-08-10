@@ -1,40 +1,24 @@
+import mongoose, { ConnectOptions } from 'mongoose';
 import logger from '../config/logger';
+import postSchema, { PostName, PostCollectionName } from './schema/post';
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
-
-// console.log(
-//   `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.jvyqrro.mongodb.net/?retryWrites=true&w=majority`
-// );
-// const client = new MongoClient(
-//   `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.jvyqrro.mongodb.net/?retryWrites=true&w=majority`,
-//   // 'mongodb+srv://wadiz:wadiz1234@cluster0.jvyqrro.mongodb.net/?retryWrites=true&w=majority',
-//   {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     serverApi: ServerApiVersion.v1,
-//   }
-// );
-
-export const getDBPosts = async () => {
-  try {
-    const client = new MongoClient(
-      `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.jvyqrro.mongodb.net/?retryWrites=true&w=majority`,
+const models = (() => {
+  // atlas mongodb cluster와 연결
+  mongoose
+    .connect(
+      `mongodb+srv://wadiz:wadiz1234@cluster0.jvyqrro.mongodb.net/?retryWrites=true&w=majority`,
       {
+        dbName: 'walog',
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        serverApi: ServerApiVersion.v1,
-      }
-    );
+      } as ConnectOptions
+    )
+    .then(() => logger.info('mongodb connected'))
+    .catch((err: string) => logger.error(err));
 
-    await client.connect();
+  return {
+    Post: mongoose.model(PostName, postSchema, PostCollectionName),
+  };
+})();
 
-    const posts = client.db('walog').collection('post');
-    const cursor = posts.find({});
-    let results: any = [];
-    await cursor.forEach((item: any) => (results = [...results, { ...item }]));
-    client.close();
-    return results;
-  } catch (err) {
-    logger.error(err);
-  }
-};
+export default models;

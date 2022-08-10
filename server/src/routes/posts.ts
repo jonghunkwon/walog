@@ -1,15 +1,15 @@
 import express, { Request, Response, NextFunction } from 'express';
-import { getPosts, getPost } from '../lib/posts';
+import { getPost } from '../lib/posts';
+import models from '../models';
 import logger from '../config/logger';
-
-const getDBPosts = require('../models').getDBPosts;
 const router = express.Router();
 
 router.get(
   '/getAllPostData',
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      res.send(await getDBPosts());
+      const result = await models.Post.find({});
+      res.send(result);
     } catch (e) {
       const error = new Error('GET getPosts Unhandled error!');
       logger.error('GET getPosts Unhandled error!');
