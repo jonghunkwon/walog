@@ -6,7 +6,7 @@ const models = (() => {
   // atlas mongodb cluster와 연결
   mongoose
     .connect(
-      `mongodb+srv://wadiz:wadiz1234@cluster0.jvyqrro.mongodb.net/?retryWrites=true&w=majority`,
+      `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.jvyqrro.mongodb.net/?retryWrites=true&w=majority`,
       {
         dbName: 'walog',
         useNewUrlParser: true,

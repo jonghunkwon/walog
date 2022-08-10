@@ -4,9 +4,9 @@ import morgan from 'morgan';
 
 const bodyParser = require('body-parser');
 
-import posts from './routes/posts';
-import logger from './config/logger';
 import './config/enviroment';
+import logger from './config/logger';
+import posts from './routes/posts';
 
 const app = express();
 app.use('/public', express.static('public'));
