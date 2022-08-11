@@ -1,6 +1,6 @@
 import mongoose, { ConnectOptions } from 'mongoose';
 import logger from '../config/logger';
-import postSchema, { PostName, PostCollectionName } from './schema/post';
+import PostAPI from './api';
 
 const models = (() => {
   // atlas mongodb cluster와 연결
@@ -8,7 +8,7 @@ const models = (() => {
     .connect(
       `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.jvyqrro.mongodb.net/?retryWrites=true&w=majority`,
       {
-        dbName: 'walog',
+        dbName: `${process.env.DATABASE_NAME}`,
         useNewUrlParser: true,
         useUnifiedTopology: true,
       } as ConnectOptions
@@ -17,7 +17,7 @@ const models = (() => {
     .catch((err: string) => logger.error(err));
 
   return {
-    Post: mongoose.model(PostName, postSchema, PostCollectionName),
+    ...PostAPI,
   };
 })();
 
