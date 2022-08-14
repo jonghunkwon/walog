@@ -80,28 +80,34 @@ const fonts = {
     letterSpacing: "-0.6px",
     fontSize: "20px",
   },
-  title6: {
+
+  body1Regular: {
     lineHeight: "28px",
     letterSpacing: "-0.6px",
     fontSize: "18px",
   },
-
-  body1Regular: {
+  body1bold: {
+    lineHeight: "28px",
+    letterSpacing: "-0.6px",
+    fontSize: "18px",
+    fontWeight: "700"
+  },
+  body2Regular: {
     lineHeight: "28px",
     letterSpacing: "-0.3px",
     fontSize: "16px",
   },
-  body1bold: {
+  body2bold: {
     lineHeight: "28px",
     letterSpacing: "-0.3px",
     fontSize: "16px",
     fontWeight: "700"
   },
-  body2Regular: {
+  body3Regular: {
     lineHeight: "20px",
     fontSize: "14px",
   },
-  body2bold: {
+  body3bold: {
     lineHeight: "20px",
     fontSize: "14px",
     fontWeight: "700"

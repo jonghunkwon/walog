@@ -28,7 +28,7 @@ const Container = styled.div`
     margin: 0 5px;
     padding: 0 3px;
     color: ${props => props.theme.colors.grey700};
-    ${props => props.theme.fonts.body1Regular};
+    ${props => props.theme.fonts.body2Regular};
 
     &:hover {
       color: ${props => props.theme.colors.grey900};

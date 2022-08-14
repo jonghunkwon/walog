@@ -24,7 +24,7 @@ const Title = styled.strong`
 
 const Description = styled.p`
   margin-top: 12px;
-  ${props => props.theme.fonts.title6};
+  ${props => props.theme.fonts.body1Regular};
 `;
 
 const Time = styled.time`
