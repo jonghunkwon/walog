@@ -10,10 +10,15 @@ interface BlogItemProps {
 }
 
 const Container = styled.div`
-  padding: 20px 0;
-
   & > a {
     display: block;
+    padding: 20px 0;
+
+    &:hover {
+      strong, p {
+        color: ${props => props.theme.colors.primary800};
+      }
+    }
   }
 `;
 
