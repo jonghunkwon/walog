@@ -8,7 +8,8 @@ export interface IPostType extends Document {
   tags: Types.Array<string>;
   description: string;
   author: string;
-  markdown: string;
+  content: string;
+  createAt?: Date;
 }
 
 const PostSchema = new Schema<IPostType>({
@@ -19,7 +20,8 @@ const PostSchema = new Schema<IPostType>({
   tags: { type: [String], default: [], require: true },
   description: { type: String, default: '', require: true },
   author: { type: String, default: '', require: true },
-  markdown: { type: String, default: '', require: true },
+  content: { type: String, default: '', require: true },
+  createAt: { type: Date, default: Date.now, require: true },
 });
 
 export default model<IPostType>('Post', PostSchema, 'post');

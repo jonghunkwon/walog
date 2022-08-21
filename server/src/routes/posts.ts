@@ -1,9 +1,8 @@
 import express, { Request, Response, NextFunction } from 'express';
-import { getPost } from '../lib/posts';
 import models from '../models';
-import Post from '../models/model/Post';
 import logger from '../config/logger';
-import { getHtml } from '../lib/remark';
+import { getHtml, getRemark } from '../lib/format';
+import { IPostType } from '../models/model/Post';
 const router = express.Router();
 
 router.get(
@@ -31,7 +30,7 @@ router.get(
         new Error('GET getPostData Unhandled error!');
       }
 
-      const contentHtml = await getHtml(result[0].markdown);
+      const contentHtml = await getHtml(result[0].content);
       res.send({ ...result[0].toObject(), contentHtml });
     } catch (e) {
       const error = new Error('GET getPostData Unhandled error!');
@@ -41,14 +40,49 @@ router.get(
   }
 );
 
-router.put('/savePost', (req: Request, res: Response, next: NextFunction) => {
-  res.send(req.body);
-});
+router.post(
+  '/createPost',
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id, content } = req.body;
+      const remark = getRemark(id, content) as IPostType;
+      const result = await models.PostAPI.createPost(remark);
+      res.send(result);
+    } catch (e) {
+      const error = new Error('GET createPost Unhandled error!');
+      logger.error(e || 'GET createPost Unhandled error!');
+      next(error);
+    }
+  }
+);
+
+router.patch(
+  '/updatePost',
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id, content } = req.body;
+      const result = await models.PostAPI.updatePost(id, content);
+      res.send(result);
+    } catch (e) {
+      const error = new Error('GET updatePost Unhandled error!');
+      logger.error(e || 'GET updatePost Unhandled error!');
+      next(error);
+    }
+  }
+);
 
 router.delete(
-  '/deletePost/:id',
-  (req: Request, res: Response, next: NextFunction) => {
-    res.send(req.body);
+  '/deletePost',
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id } = req.body;
+      const result = await models.PostAPI.deletePost(id);
+      res.send(result);
+    } catch (e) {
+      const error = new Error('GET deletePost Unhandled error!');
+      logger.error(e || 'GET deletePost Unhandled error!');
+      next(error);
+    }
   }
 );
 
