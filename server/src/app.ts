@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 import './config/enviroment';
 import logger from './config/logger';
 import posts from './routes/posts';
+import adminPosts from './routes/admin/posts';
 
 const app = express();
 app.use('/public', express.static('public'));
@@ -21,6 +22,7 @@ const morganFormat = process.env.NODE_ENV !== 'production' ? 'dev' : combined; /
 app.use(morgan(morganFormat, { stream: logger.stream }));
 
 app.use('/posts', posts);
+app.use('/admin/posts', adminPosts);
 
 // 공통 에러 처리
 const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
