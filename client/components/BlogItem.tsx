@@ -11,10 +11,15 @@ interface BlogItemProps {
 }
 
 const Container = styled.div`
-  padding: 20px 0;
-
   & > a {
     display: block;
+    padding: 20px 0;
+
+    &:hover {
+      strong, p {
+        color: ${props => props.theme.colors.primary800};
+      }
+    }
   }
 `;
 
@@ -25,7 +30,7 @@ const Title = styled.strong`
 
 const Description = styled.p`
   margin-top: 12px;
-  ${props => props.theme.fonts.title6};
+  ${props => props.theme.fonts.body1Regular};
 `;
 
 const Time = styled.time`
