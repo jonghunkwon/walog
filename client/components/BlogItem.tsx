@@ -7,6 +7,7 @@ interface BlogItemProps {
   title: string;
   description?: string; //필수?
   dateTime: string;
+  onClick: (id:string) => void;
 }
 
 const Container = styled.div`
@@ -35,10 +36,10 @@ const Time = styled.time`
   ${props => props.theme.fonts.body2Regular};
 `;
 
-const BlogItem: FunctionComponent<BlogItemProps> = ({ href, dateTime, title, description}) => {
+const BlogItem: FunctionComponent<BlogItemProps> = ({ href, dateTime, title, description, onClick}) => {
   return (
     <Container>
-      <Link href={href}>
+      <Link href={href} onClick={onClick}>
         <a>
           <Title>{title}</Title>
           <Description>{description}</Description>
