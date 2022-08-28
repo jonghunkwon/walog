@@ -122,8 +122,8 @@ const GlobalStyles = () => {
 
         a,
         button {
-          outline: none;
-          -webkit-appearance: none;
+          outline-color: #5cdede;
+          -webkit-appearance-color: #5cdede;
         }
 
         a {

@@ -19,12 +19,11 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
   return (
     <div>
       <Header />
-        <main>
-        <KeyVisual />
-          <Inner>
-            {children}
-          </Inner>
-        </main>
+      <main id="mainContent">
+        <Inner>
+          {children}
+        </Inner>
+      </main>
     </div>
   );
 };
