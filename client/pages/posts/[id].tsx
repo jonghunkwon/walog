@@ -1,6 +1,12 @@
 import type { NextPage, GetServerSideProps } from "next";
 import Head from 'next/head';
 import { fetchPost } from '../api/posts/post';
+import cx from 'classnames';
+import {
+  markdownRenderStyles,
+  primeOneDark,
+} from "../../styles/markdownStyles";
+import BlogTitle from '../../components/BlogTitle';
 
 interface PostProps {
   id: string;
@@ -30,9 +36,8 @@ const Posts: NextPage<PostProps> = ({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div>
-        <h2>{ title }</h2>
-        <p> { date }</p>
-        <span dangerouslySetInnerHTML={{ __html: contentHtml }}></span>
+        <BlogTitle title={title} dateTime={date}/>
+        <article className={cx(markdownRenderStyles, primeOneDark)} dangerouslySetInnerHTML={{ __html: contentHtml }}></article>
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import React, { FunctionComponent, ReactNode } from "react";
 import styled from "@emotion/styled";
 import Header from "./Header";
+import KeyVisual from './KeyVisual';
 
 interface LayoutProps {
   children: ReactNode;
@@ -18,11 +19,11 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
   return (
     <div>
       <Header />
-        <main id="mainContent">
-          <Inner>
-            {children}
-          </Inner>
-        </main>
+      <main id="mainContent">
+        <Inner>
+          {children}
+        </Inner>
+      </main>
     </div>
   );
 };

@@ -7,13 +7,19 @@ interface BlogItemProps {
   title: string;
   description?: string; //필수?
   dateTime: string;
+  onClick: (id:string) => void;
 }
 
 const Container = styled.div`
-  padding: 20px 0;
-
   & > a {
     display: block;
+    padding: 20px 0;
+
+    &:hover {
+      strong, p {
+        color: ${props => props.theme.colors.primary800};
+      }
+    }
   }
 `;
 
@@ -24,7 +30,7 @@ const Title = styled.strong`
 
 const Description = styled.p`
   margin-top: 12px;
-  ${props => props.theme.fonts.title6};
+  ${props => props.theme.fonts.body1Regular};
 `;
 
 const Time = styled.time`
@@ -35,10 +41,10 @@ const Time = styled.time`
   ${props => props.theme.fonts.body2Regular};
 `;
 
-const BlogItem: FunctionComponent<BlogItemProps> = ({ href, dateTime, title, description}) => {
+const BlogItem: FunctionComponent<BlogItemProps> = ({ href, dateTime, title, description, onClick}) => {
   return (
     <Container>
-      <Link href={href}>
+      <Link href={href} onClick={onClick}>
         <a>
           <Title>{title}</Title>
           <Description>{description}</Description>
