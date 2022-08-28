@@ -149,7 +149,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
             <a
               // onClick={}
               tabIndex={1}
-              aria-current={data.current ? 'current' : null
+              aria-current={data.current ? 'page' : null
             }>{index + 1}</a>
           </Link>
         )
