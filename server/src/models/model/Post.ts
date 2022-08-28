@@ -1,4 +1,5 @@
-import { Schema, Types, Document, model } from 'mongoose';
+import { Schema, Types, Document, model, PaginateModel } from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate';
 
 export interface IPostType extends Document {
   id: string;
@@ -23,5 +24,10 @@ const PostSchema = new Schema<IPostType>({
   content: { type: String, default: '', require: true },
   createAt: { type: Date, default: Date.now, require: true },
 });
+PostSchema.plugin(mongoosePaginate);
 
-export default model<IPostType>('Post', PostSchema, 'post');
+export default model<IPostType, PaginateModel<IPostType>>(
+  'Post',
+  PostSchema,
+  'post'
+);
