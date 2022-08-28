@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
-import styled from "@emotion/styled";
 import Link from "next/link";
+import SkipNavigation from "./SkipNavigation";
+import styled from "@emotion/styled";
 
 const Container = styled.header`
   position: sticky;
@@ -24,18 +25,6 @@ const Logo = styled.h1`
   }
 `;
 
-const SkipNavigation = styled.a`
-  margin-left: 10px;
-  color: rgba(255, 255, 255, 0);
-
-  &:focus {
-    padding: 2px 8px;
-    border-radius: 16px;
-    background-color: ${props => props.theme.colors.primary200};
-    color: ${props => props.theme.colors.grey700};
-  }
-`;
-
 const Header = () => (
   <Container>
     <Inner>
@@ -46,7 +35,7 @@ const Header = () => (
           </a>
         </Link>
       </Logo>
-      <SkipNavigation href="#mainContent">skip navition</SkipNavigation>
+      <SkipNavigation contentId="mainContent" contentText="navition" />
     </Inner>
   </Container>
 );
