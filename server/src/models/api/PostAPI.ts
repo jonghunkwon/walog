@@ -1,5 +1,25 @@
 import Post, { IPostType } from '../model/Post';
 
+export const getPostsPagination = async (page: number, limit: number) => {
+  return await Post.paginate(
+    {},
+    {
+      page,
+      limit,
+      sort: { createAt: 'desc' },
+      select: {
+        title: 1,
+        date: 1,
+        category: 1,
+        tags: 1,
+        description: 1,
+        id: 1,
+        createAt: 1,
+      },
+    }
+  );
+};
+
 export const getPosts = async () => {
   return await Post.find(
     {},
