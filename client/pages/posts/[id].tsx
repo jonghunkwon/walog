@@ -1,6 +1,8 @@
-import type { NextPage, GetServerSideProps } from "next";
+import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { fetchPost } from '../api/posts/post';
+import { fetchPostList } from '../api/posts/post';
 import cx from 'classnames';
 import {
   markdownRenderStyles,
@@ -15,13 +17,25 @@ interface PostProps {
   date: string;
 } 
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const result = await fetchPost(params?.id as string);
+export const getStaticPaths: GetStaticPaths = async () => {
+  const result = await fetchPostList();
 
+  const paths = result.map((post: PostProps) => ({ params: { id: post.id }}));
+
+  return {
+    paths,
+    fallback: 'blocking',
+  }
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const result = await fetchPost(params?.id as string);
+  
   return {
     props: result,
   };
 };
+
 
 const Posts: NextPage<PostProps> = ({
   id,
@@ -29,6 +43,11 @@ const Posts: NextPage<PostProps> = ({
   title,
   date,
 }) => {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>loding</div>
+  };
+
   return (
     <>
       <Head>
