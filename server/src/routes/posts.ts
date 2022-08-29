@@ -71,7 +71,11 @@ router.get(
       }
 
       const contentHtml = await getHtml(result[0].content);
-      res.send({ ...result[0].toObject(), contentHtml });
+      res.send({
+        ...result[0].toObject(),
+        contentHtml: contentHtml.content,
+        toc: contentHtml.toc,
+      });
     } catch (e) {
       const error = new Error('GET posts/getPostData Unhandled error!');
       logger.error(e || 'GET posts/getPostData Unhandled error!');
