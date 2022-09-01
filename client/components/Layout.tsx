@@ -8,9 +8,9 @@ interface LayoutProps {
 }
 
 const Inner = styled.div`
-  max-width: 1400px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 50px 16px;
   box-sizing: content-box;
 `;
 

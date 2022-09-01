@@ -6,7 +6,7 @@ import {
   markdownRenderStyles,
   primeOneDark,
 } from "../../styles/markdownStyles";
-import BlogTitle from '../../components/BlogTitle';
+import PostTitle from '../../components/PostTitle';
 
 interface PostProps {
   id: string;
@@ -36,7 +36,7 @@ const Posts: NextPage<PostProps> = ({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div>
-        <BlogTitle title={title} dateTime={date}/>
+        <PostTitle title={title} dateTime={date}/>
         <article className={cx(markdownRenderStyles, primeOneDark)} dangerouslySetInnerHTML={{ __html: contentHtml }}></article>
       </div>
     </>
