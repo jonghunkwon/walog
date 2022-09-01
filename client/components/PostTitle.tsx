@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-interface BlogTitleProps {
+interface PostTitleProps {
   title: string;
   dateTime: string;
 }
@@ -20,7 +20,7 @@ const Time = styled.time`
   ${(props) => props.theme.fonts.body2Regular};
 `;
 
-const BlogTitle: FunctionComponent<BlogTitleProps> = ({ title, dateTime}) => {
+const PostTitle: FunctionComponent<PostTitleProps> = ({ title, dateTime}) => {
   return (
     <Container>
       <Title>{title}</Title>
@@ -29,4 +29,4 @@ const BlogTitle: FunctionComponent<BlogTitleProps> = ({ title, dateTime}) => {
   );
 };
 
-export default BlogTitle;
+export default PostTitle;
