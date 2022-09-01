@@ -1,14 +1,14 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import BlogTitle from '../components/BlogTitle';
+import PostTitle from '../components/PostTitle';
 
 export default {
-  title: 'Example/BlogTitle',
-  component: BlogTitle,
-} as ComponentMeta<typeof BlogTitle>;
+  title: 'Example/PostTitle',
+  component: PostTitle,
+} as ComponentMeta<typeof PostTitle>;
 
-const Template: ComponentStory<typeof BlogTitle> = (args) => <BlogTitle {...args} />;
+const Template: ComponentStory<typeof PostTitle> = (args) => <PostTitle {...args} />;
 
 export const Component = Template.bind({});
 Component.args = {
