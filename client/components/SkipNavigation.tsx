@@ -9,6 +9,7 @@ interface SkipNavigationProps {
 const Container = styled.a`
   position: absolute;
   color: rgba(255, 255, 255, 0);
+  z-index: -1;
 
   &:focus {
     padding: 2px 8px;
