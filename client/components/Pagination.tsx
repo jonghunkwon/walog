@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import React, { FunctionComponent } from "react";
-import { jsx, css } from "@emotion/react";
+import { jsx, css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
@@ -11,11 +11,17 @@ interface PaginationProps {
   prev: boolean,
   next: boolean,
   nextEnd: boolean,
-  pageNumbers?: {
-    href: string,
-    current: boolean,
-  },
-};
+  pageNumbers: {
+    href: string;
+    current: boolean;
+  }[];
+}
+
+interface ButtonArrowProps {
+  css?: SerializedStyles;
+  disabled: boolean;
+  tabIndex: number;
+}
 
 const Container = styled.div`
   display: flex;
