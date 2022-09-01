@@ -10,14 +10,14 @@ const Container = styled.div``;
 const Title = styled.h3`
   padding: 16px 0;
   border-bottom: 1px solid #dde2e6;
-  ${props => props.theme.fonts.title2};
+  ${(props) => props.theme.fonts.title2};
 `;
 
 const Time = styled.time`
   display: block;
   padding: 14px 0;
-  color: ${props => props.theme.colors.grey700};
-  ${props => props.theme.fonts.body2Regular};
+  color: ${(props) => props.theme.colors.grey700};
+  ${(props) => props.theme.fonts.body2Regular};
 `;
 
 const BlogTitle: FunctionComponent<BlogTitleProps> = ({ title, dateTime}) => {

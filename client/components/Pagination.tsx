@@ -27,23 +27,23 @@ const Container = styled.div`
     display: block;
     margin: 0 5px;
     padding: 0 3px;
-    color: ${props => props.theme.colors.grey700};
-    ${props => props.theme.fonts.body2Regular};
+    color: ${(props) => props.theme.colors.grey700};
+    ${(props) => props.theme.fonts.body2Regular};
 
     &:hover {
-      color: ${props => props.theme.colors.grey900};
+      color: ${(props) => props.theme.colors.grey900};
       font-weight: 700;
     }
 
     &[aria-current='current'],
     &[aria-current='current']:hover {
-      color: ${props => props.theme.colors.primary700};
+      color: ${(props) => props.theme.colors.primary700};
       font-weight: 700;
     }
   }
 `;
 
-const ButtonArrow = props => (
+const ButtonArrow = (props: ButtonArrowProps) => (
   <ButtonArrowCommon
     type="button"
     {...props}
@@ -57,7 +57,7 @@ const ButtonArrowCommon = styled.button`
     width: 9px;
     height: 9px;
     margin: 0 auto;
-    border: 1px solid ${props => props.theme.colors.grey700};
+    border: 1px solid ${(props) => props.theme.colors.grey700};
     border-width: 0 0 1px 1px;
     vertical-align: middle;
     content: '';
@@ -66,7 +66,7 @@ const ButtonArrowCommon = styled.button`
   &:disabled {
     &::before,
     &::after {
-      border-color: ${props => props.theme.colors.grey400};
+      border-color: ${(props) => props.theme.colors.grey400};
     }
   }
 
@@ -78,7 +78,7 @@ const ButtonArrowCommon = styled.button`
     &:hover {
       &::before,
       &::after {
-        border-color: ${props => props.theme.colors.grey900};
+        border-color: ${(props) => props.theme.colors.grey900};
         border-width: 0 0 1.5px 1.5px;
       }
     }
@@ -150,7 +150,8 @@ const Pagination: FunctionComponent<PaginationProps> = ({
               // onClick={}
               tabIndex={1}
               aria-current={data.current ? 'page' : null
-            }>{index + 1}</a>
+            }>{index + 1}
+            </a>
           </Link>
         )
       })}

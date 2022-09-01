@@ -21,7 +21,7 @@ const Inner = styled.div`
 const Logo = styled.h1`
   & > a {
     display: block;
-    ${props => props.theme.fonts.title3}
+    ${(props) => props.theme.fonts.title3}
   }
 `;
 

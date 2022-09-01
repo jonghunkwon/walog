@@ -17,7 +17,7 @@ const Container = styled.div`
 
     &:hover {
       strong, p {
-        color: ${props => props.theme.colors.primary800};
+        color: ${(props) => props.theme.colors.primary800};
       }
     }
   }
@@ -25,12 +25,12 @@ const Container = styled.div`
 
 const Title = styled.strong`
   display: block;
-  ${props => props.theme.fonts.title2};
+  ${(props) => props.theme.fonts.title2};
 `;
 
 const Description = styled.p`
   margin-top: 12px;
-  ${props => props.theme.fonts.body1Regular};
+  ${(props) => props.theme.fonts.body1Regular};
 `;
 
 const Time = styled.time`

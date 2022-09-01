@@ -13,8 +13,8 @@ const Container = styled.a`
   &:focus {
     padding: 2px 8px;
     border-radius: 16px;
-    background-color: ${props => props.theme.colors.primary200};
-    color: ${props => props.theme.colors.grey700};
+    background-color: ${(props) => props.theme.colors.primary200};
+    color: ${(props) => props.theme.colors.grey700};
     z-index: 1;
   }
 `;
