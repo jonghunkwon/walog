@@ -26,7 +26,7 @@ const Li = styled.li`
 
     &:hover {
       strong, p {
-        color: ${(props) => props.theme.colors.primary800};
+        text-decoration: underline;
       }
     }
   }
@@ -34,7 +34,7 @@ const Li = styled.li`
 
 const Title = styled.strong`
   display: block;
-  ${(props) => props.theme.fonts.title2};
+  ${(props) => props.theme.fonts.title1};
 `;
 
 const Description = styled.p`

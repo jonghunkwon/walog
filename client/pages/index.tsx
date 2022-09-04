@@ -27,6 +27,7 @@ const Home: NextPage<HomeProps> = ({
 
   return (
     <div>
+      <h3 className="blind">블로그 포스트 리스트</h3>
       <PostList postList={postList} onClick={handleClick} />
     </div>
   )

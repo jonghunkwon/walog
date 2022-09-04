@@ -36,6 +36,7 @@ const Posts: NextPage<PostProps> = ({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div>
+        <h2 className="blind">포스트 상세내용</h2>
         <PostTitle title={title} dateTime={date}/>
         <article className={cx(markdownRenderStyles, primeOneDark)} dangerouslySetInnerHTML={{ __html: contentHtml }}></article>
       </div>

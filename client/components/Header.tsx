@@ -37,7 +37,7 @@ const Header = () => (
           </a>
         </Link>
       </Logo>
-      <SkipNavigation contentId="mainContent" contentText="navition" />
+      <SkipNavigation contentId="content" contentText="navition" />
     </Inner>
   </Container>
 );
