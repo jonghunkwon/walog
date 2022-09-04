@@ -1,8 +1,7 @@
 import type { NextPage, GetServerSideProps } from 'next'
 import { useRouter } from "next/router";
 import { fetchPostList } from './api/posts/post';
-import BlogItem from '../components/BlogItem';
-import styles from '../styles/Home.module.css'
+import PostList from '../components/PostList';
 
 interface HomeProps {
   postList: Array<any>;
@@ -17,7 +16,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-
 const Home: NextPage<HomeProps> = ({
   postList,
 }) => {
@@ -28,22 +26,10 @@ const Home: NextPage<HomeProps> = ({
   };
 
   return (
-    <>
-      <div className={styles.container}>
-        {
-          postList && postList.map((post: any) => (
-            <BlogItem
-              key={post.id}
-              onClick={handleClick}
-              href={`/posts${post.id}`}
-              title={post.title}
-              dateTime={post.date}
-              description={post.description}
-            />
-          ))
-        }
-      </div>
-    </>
+    <div>
+      <h3 className="blind">블로그 포스트 리스트</h3>
+      <PostList postList={postList} onClick={handleClick} />
+    </div>
   )
 }
 

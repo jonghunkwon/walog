@@ -1,3 +1,5 @@
+import { Theme } from "@emotion/react";
+
 const colors = {
   // primary
   primary100: '#e7f9f9',
@@ -42,17 +44,11 @@ const colors = {
   grey900: '#212529',
 
   // white
-  white68: 'rgba(255, 255, 255, 0.68)',
-  white84: 'rgba(255, 255, 255, 0.84)',
   white100: '#fff',
 
   // black
-  black30:	'rgba(0, 0, 0, 0.3)',
-  black54: 'rgba(0, 0, 0, 0.54)',
-  black68: 'rgba(0, 0, 0, 0.68)',
   black100: '#000',
 };
-
 
 const fonts = {
   title1: {
@@ -133,7 +129,7 @@ const fonts = {
   },
 };
 
-const theme = {
+const theme: Theme = {
   colors,
   fonts,
 };
